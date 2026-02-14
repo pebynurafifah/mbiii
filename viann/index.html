@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for you 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #ffb6c1, #ffc0cb, #ff9ec4, #ffd6e8);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    backdrop-filter: blur(3px);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 0 4px 15px rgba(255,105,180,0.7);
+    animation: fadeUp 1.2s ease;
+}
+
+p {
+    font-size: 1.1em;
+    color: white;
+    line-height: 1.7em;
+    max-width: 700px;
+    margin: auto;
+    animation: fadeUp 1.5s ease;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    background: linear-gradient(45deg,#ff69b4,#ff1493);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,105,180,0.4);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(255,105,180,0.6);
+}
+
+img {
+    width: 80%;
+    max-width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: 0.4s;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery img {
+    width: 100%;
+}
+
+.heart, .confetti {
+    position: fixed;
+    top: -10vh;
+    animation: fall linear infinite;
+}
+
+.heart {
+    color: white;
+}
+
+.confetti {
+    width: 10px;
+    height: 10px;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+#ending {
+    display:none;
+    font-size:2em;
+    color:white;
+    margin-top:40px;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PASSWORD PAGE */
+#passwordPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#passwordInput {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 15px;
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div id="passwordPage">
+    <h1>Masukkan password dulu yaa 🤍</h1> <br>
+    hayoo apaa cobaa password nyaaa?? kamu ingett gaa aku sukaa apaaa <br>
+    adaa 5 huruff taaauu
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Submit</button>
+    <p id="passwordMsg" style="color:white; margin-top:15px;"></p>
+</div>
+
+<!-- HALAMAN 1 -->
+<div class="section" id="page1" style="display:none;">
+   <h1>haaiiii iiaaann 💖</h1>
+   <p>kamu mau jadi valentine aku gaaa? 🥺💕</p> <br> <br>
+   liaatt nyaa pelan pelann yaa?? soalnyaa ada lagu kesukaan aku muncull ehehhehe <br> <br>
+   <button onclick="showPage2()">mulai 💖</button>
+</div>
+
+<!-- HALAMAN 2 -->
+<div class="section" id="page2" style="display:none;">
+    <h1>happy valentine's day 🤍</h1>
+    <img src="foto1.jpg">
+    <p>
+    aku sayang iaann banyak banyaakk 💗<br><br>
+    apapun masalah nya, kita lewatin sama sama ya 🤍
+    </p>
+    <button onclick="showPage3()">lanjut ➡️</button>
+</div>
+
+<!-- HALAMAN 3 -->
+<div class="section" id="page3" style="display:none;">
+    <h1>foto kita 🤍</h1>
+
+    <div class="gallery">
+        <img src="foto1.jpg">
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+        <img src="foto4.jpg">
+        <img src="foto5.jpg">
+    </div>
+
+    <p style="margin-top:30px;">
+   happy valentine's day 🤍 <br><br>
+   terimakasih udah jadi bagian paling tenang di hidup aku.<br><br>
+   aku bersyukur banget bisaa ketemu iaann.<br><br>
+   kita mungkin enggaa selalu di hari yang mudah, tapi kita selalu milih buat tetap bareng.<br><br>
+   itu yang paling berarti.<br><br>
+   thank you for staying, for understanding, for trying.<br><br>
+   kalau nanti ada badai lagi, kita hadapin pelan-pelan ya.<br><br>
+   gaa perlu sempurna koo<br><br>
+   aku bangga sama iaann.<br><br>
+   aku percaya sama iaann.<br><br>
+   dan aku selalu ada di sisi iaann.<br><br>
+   please jangan pernah berubah jadi orang yang iaannsekarang.<br><br>
+   tetap jadi kamu yang tulus, sabar, dan hangat.<br><br>
+   i’m always on your side. 🤍.
+    </p>
+
+    <h2 style="color:white; margin-top:40px;">tes kejujuran 😜</h2>
+
+    <button onclick="answerLove()">aku lucu ga?</button>
+    <button onclick="answerLove()">aku gemes ga?</button>
+
+    <p id="jawaban" style="margin-top:20px; font-weight:bold; color:white;"></p>
+
+    <div id="ending">
+         i’m really glad i met you.<br>
+         that’s it. 🤍
+    </div>
+
+    <br>
+    <button onclick="showPage4()">halaman terakhir ➡️</button>
+</div>
+
+<!-- HALAMAN 4 -->
+<div class="section" id="page4" style="display:none;">
+    <h1>about the creator 🤍</h1>
+
+    <img src="fotoaku.jpg">
+
+    <p style="margin-top:30px;">
+    haiii, aku yang bikin ini semua 😌<br><br>
+    aku suka coding.<br>
+    aku suka bikin hal kecil jadi berarti.<br><br>
+    website ini aku buat sendiri.<br>
+    karena effort kecil juga punya arti.<br><br>
+    dan ya… aku emang secinta itu sama dunia ngoding 🤍
+    </p>
+
+    <h2 id="signature" style="color:white; margin-top:40px;"></h2>
+</div>
+
+<audio id="music" src="lagu.mp3"></audio>
+
+<script>
+// PASSWORD FUNCTION
+function checkPassword(){
+    var pw = document.getElementById("passwordInput").value;
+    var msg = document.getElementById("passwordMsg");
+    if(pw === "cilok"){
+        document.getElementById("passwordPage").style.display = "none";
+        document.getElementById("page1").style.display = "block";
+        document.getElementById("music").play();
+        startConfetti();
+    } else {
+        msg.innerText = "Password salah 😜";
+    }
+}
+
+// PAGE NAVIGATION
+function showPage2(){
+    document.getElementById("page2").style.display="block";
+    document.getElementById("page2").scrollIntoView({behavior:"smooth"});
+}
+
+function showPage3(){
+    document.getElementById("page3").style.display="block";
+    document.getElementById("page3").scrollIntoView({behavior:"smooth"});
+
+    setTimeout(()=>{
+        document.getElementById("ending").style.display="block";
+    },2000);
+}
+
+function showPage4(){
+    document.getElementById("page4").style.display="block";
+    document.getElementById("page4").scrollIntoView({behavior:"smooth"});
+    typeEffect(document.getElementById("signature"),
+    "made with love & logic 💻💖", 80);
+}
+
+function answerLove(){
+    document.getElementById("jawaban").innerHTML =
+    "jawaban yang benar cuma satu: iyaaa. hahayyy 😌💖";
+}
+
+function typeEffect(element, text, speed){
+    let i = 0;
+    element.innerHTML = "";
+    function typing(){
+        if(i < text.length){
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+// HEARTS AND CONFETTI
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+function startConfetti(){
+    for(let i=0;i<50;i++){
+        const conf = document.createElement("div");
+        conf.classList.add("confetti");
+        conf.style.backgroundColor =
+        "hsl(" + Math.random()*360 + ", 100%, 70%)";
+        conf.style.left = Math.random()*100 + "vw";
+        conf.style.animationDuration = Math.random()*3+2+"s";
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(),5000);
+    }
+}
+
+// EASTER EGG
+let secretClick = 0;
+document.body.addEventListener("click", function(){
+    secretClick++;
+    if(secretClick === 7){
+        alert("kamu nemuin easter egg 😌🤍 aku bikin ini pake hati loh.");
+    }
+});
+
+// FULLSCREEN FOTO
+const images = document.querySelectorAll("img");
+images.forEach(img => {
+    img.addEventListener("click", () => {
+        if (img.requestFullscreen) {
+            img.requestFullscreen();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
