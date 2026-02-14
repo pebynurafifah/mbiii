@@ -5,16 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>for you 💖</title>
 
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Comic Sans MS', cursive;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     overflow-x: hidden;
     background: linear-gradient(-45deg, #ffb6c1, #ffc0cb, #ff9ec4, #ffd6e8);
     background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
+    animation: gradientMove 15s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -95,7 +98,8 @@ img:hover {
 .heart, .confetti {
     position: fixed;
     top: -10vh;
-    animation: fall linear infinite;
+    animation: fall linear forwards;
+    pointer-events: none;
 }
 
 .heart {
@@ -125,17 +129,10 @@ img:hover {
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
-/* PASSWORD PAGE */
 #passwordPage {
     display: flex;
     flex-direction: column;
@@ -143,6 +140,7 @@ img:hover {
     align-items: center;
     height: 100vh;
 }
+
 #passwordInput {
     padding: 12px;
     font-size: 1em;
@@ -169,15 +167,15 @@ img:hover {
 <!-- HALAMAN 1 -->
 <div class="section" id="page1" style="display:none;">
    <h1>haaiiii iiaaann 💖</h1>
-   <p>kamu mau jadi valentine aku gaaa? 🥺💕</p> <br> <br>
-   liaatt nyaa pelan pelann yaa?? soalnyaa ada lagu kesukaan aku muncull ehehhehe <br> <br>
+   <p>kamu mau jadi valentine aku gaaa? 🥺💕</p> <br><br>
+   liaatt nyaa pelan pelann yaa?? soalnyaa ada lagu kesukaan aku muncull ehehhehe <br><br>
    <button onclick="showPage2()">mulai 💖</button>
 </div>
 
 <!-- HALAMAN 2 -->
 <div class="section" id="page2" style="display:none;">
     <h1>happy valentine's day 🤍</h1>
-    <img src="foto1.jpg">
+    <img src="foto1.jpg" loading="lazy">
     <p>
     aku sayang iaann banyak banyaakk 💗<br><br>
     apapun masalah nya, kita lewatin sama sama ya 🤍
@@ -190,11 +188,11 @@ img:hover {
     <h1>foto kita 🤍</h1>
 
     <div class="gallery">
-        <img src="foto1.jpg">
-        <img src="foto2.jpg">
-        <img src="foto3.jpg">
-        <img src="foto4.jpg">
-        <img src="foto5.jpg">
+        <img src="foto1.jpg" loading="lazy">
+        <img src="foto2.jpg" loading="lazy">
+        <img src="foto3.jpg" loading="lazy">
+        <img src="foto4.jpg" loading="lazy">
+        <img src="foto5.jpg" loading="lazy">
     </div>
 
     <p style="margin-top:30px;">
@@ -234,7 +232,7 @@ img:hover {
 <div class="section" id="page4" style="display:none;">
     <h1>about the creator 🤍</h1>
 
-    <img src="fotoaku.jpg">
+    <img src="fotoaku.jpg" loading="lazy">
 
     <p style="margin-top:30px;">
     haiii, aku yang bikin ini semua 😌<br><br>
@@ -248,10 +246,9 @@ img:hover {
     <h2 id="signature" style="color:white; margin-top:40px;"></h2>
 </div>
 
-<audio id="music" src="lagu.mp3"></audio>
+<audio id="music" src="lagu.mp3" preload="none"></audio>
 
 <script>
-// PASSWORD FUNCTION
 function checkPassword(){
     var pw = document.getElementById("passwordInput").value;
     var msg = document.getElementById("passwordMsg");
@@ -265,7 +262,6 @@ function checkPassword(){
     }
 }
 
-// PAGE NAVIGATION
 function showPage2(){
     document.getElementById("page2").style.display="block";
     document.getElementById("page2").scrollIntoView({behavior:"smooth"});
@@ -274,17 +270,13 @@ function showPage2(){
 function showPage3(){
     document.getElementById("page3").style.display="block";
     document.getElementById("page3").scrollIntoView({behavior:"smooth"});
-
-    setTimeout(()=>{
-        document.getElementById("ending").style.display="block";
-    },2000);
+    setTimeout(()=>{document.getElementById("ending").style.display="block";},2000);
 }
 
 function showPage4(){
     document.getElementById("page4").style.display="block";
     document.getElementById("page4").scrollIntoView({behavior:"smooth"});
-    typeEffect(document.getElementById("signature"),
-    "made with love & logic 💻💖", 80);
+    typeEffect(document.getElementById("signature"),"made with love & logic 💻💖",80);
 }
 
 function answerLove(){
@@ -292,59 +284,56 @@ function answerLove(){
     "jawaban yang benar cuma satu: iyaaa. hahayyy 😌💖";
 }
 
-function typeEffect(element, text, speed){
-    let i = 0;
-    element.innerHTML = "";
+function typeEffect(element,text,speed){
+    let i=0;
+    element.innerHTML="";
     function typing(){
-        if(i < text.length){
-            element.innerHTML += text.charAt(i);
+        if(i<text.length){
+            element.innerHTML+=text.charAt(i);
             i++;
-            setTimeout(typing, speed);
+            setTimeout(typing,speed);
         }
     }
     typing();
 }
 
-// HEARTS AND CONFETTI
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+function createHeart(){
+    if(document.querySelectorAll(".heart").length>20)return;
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*15+15)+"px";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart, 300);
+setInterval(createHeart,1200);
 
 function startConfetti(){
-    for(let i=0;i<50;i++){
-        const conf = document.createElement("div");
-        conf.classList.add("confetti");
-        conf.style.backgroundColor =
-        "hsl(" + Math.random()*360 + ", 100%, 70%)";
-        conf.style.left = Math.random()*100 + "vw";
-        conf.style.animationDuration = Math.random()*3+2+"s";
+    for(let i=0;i<15;i++){
+        const conf=document.createElement("div");
+        conf.className="confetti";
+        conf.style.backgroundColor="hsl("+Math.random()*360+",100%,70%)";
+        conf.style.left=Math.random()*100+"vw";
+        conf.style.animationDuration=Math.random()*3+2+"s";
         document.body.appendChild(conf);
         setTimeout(()=>conf.remove(),5000);
     }
 }
 
-// EASTER EGG
-let secretClick = 0;
-document.body.addEventListener("click", function(){
+let secretClick=0;
+document.body.addEventListener("click",function(){
     secretClick++;
-    if(secretClick === 7){
+    if(secretClick===7){
         alert("kamu nemuin easter egg 😌🤍 aku bikin ini pake hati loh.");
     }
 });
 
-// FULLSCREEN FOTO
-const images = document.querySelectorAll("img");
-images.forEach(img => {
-    img.addEventListener("click", () => {
-        if (img.requestFullscreen) {
+const images=document.querySelectorAll("img");
+images.forEach(img=>{
+    img.addEventListener("click",()=>{
+        if(img.requestFullscreen){
             img.requestFullscreen();
         }
     });
