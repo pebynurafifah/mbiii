@@ -8,6 +8,17 @@
 <!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+<!-- PRELOAD FOTO BIAR GA DELAY -->
+<link rel="preload" as="image" href="foto1.jpg">
+<link rel="preload" as="image" href="foto2.jpg">
+<link rel="preload" as="image" href="foto3.jpg">
+<link rel="preload" as="image" href="foto4.jpg">
+<link rel="preload" as="image" href="foto5.jpg">
+<link rel="preload" as="image" href="fotoaku.jpg">
+
+<!-- PRELOAD LAGU -->
+<link rel="preload" as="audio" href="lagu.mp3">
+
 <style>
 body {
     margin: 0;
@@ -175,7 +186,7 @@ img:hover {
 <!-- HALAMAN 2 -->
 <div class="section" id="page2" style="display:none;">
     <h1>happy valentine's day 🤍</h1>
-    <img src="foto1.jpg" loading="lazy">
+    <img src="foto1.jpg">
     <p>
     aku sayang iaann banyak banyaakk 💗<br><br>
     apapun masalah nya, kita lewatin sama sama ya 🤍
@@ -188,11 +199,11 @@ img:hover {
     <h1>foto kita 🤍</h1>
 
     <div class="gallery">
-        <img src="foto1.jpg" loading="lazy">
-        <img src="foto2.jpg" loading="lazy">
-        <img src="foto3.jpg" loading="lazy">
-        <img src="foto4.jpg" loading="lazy">
-        <img src="foto5.jpg" loading="lazy">
+        <img src="foto1.jpg">
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+        <img src="foto4.jpg">
+        <img src="foto5.jpg">
     </div>
 
     <p style="margin-top:30px;">
@@ -232,7 +243,7 @@ img:hover {
 <div class="section" id="page4" style="display:none;">
     <h1>about the creator 🤍</h1>
 
-    <img src="fotoaku.jpg" loading="lazy">
+    <img src="fotoaku.jpg">
 
     <p style="margin-top:30px;">
     haiii, aku yang bikin ini semua 😌<br><br>
@@ -246,16 +257,39 @@ img:hover {
     <h2 id="signature" style="color:white; margin-top:40px;"></h2>
 </div>
 
-<audio id="music" src="lagu.mp3" preload="none"></audio>
+<audio id="music" src="lagu.mp3" preload="auto"></audio>
 
 <script>
+
+// PRELOAD SEMUA FOTO BIAR GA DELAY
+const imageList = [
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg",
+"foto4.jpg",
+"foto5.jpg",
+"fotoaku.jpg"
+];
+
+imageList.forEach(src=>{
+    const img = new Image();
+    img.src = src;
+});
+
+// PRELOAD LAGU
+const music = document.getElementById("music");
+music.load();
+
 function checkPassword(){
     var pw = document.getElementById("passwordInput").value;
     var msg = document.getElementById("passwordMsg");
     if(pw === "cilok"){
         document.getElementById("passwordPage").style.display = "none";
         document.getElementById("page1").style.display = "block";
-        document.getElementById("music").play();
+
+        music.currentTime = 0;
+        music.play().catch(()=>{});
+
         startConfetti();
     } else {
         msg.innerText = "Password salah 😜";
@@ -338,6 +372,7 @@ images.forEach(img=>{
         }
     });
 });
+
 </script>
 
 </body>
